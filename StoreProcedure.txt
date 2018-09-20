@@ -1,0 +1,9 @@
+//To create a procedure
+Create procedure Max_Rent
+as
+select p2.Rent,p2.Location, p2.Note from (select branchid,max(rent) as maxrent from Property group by BranchID) as p1 inner join Property as p2 on p1.BranchID=p2.BranchID and p1.maxrent=p2.Rent
+
+GO;
+
+//For excecution
+Exec Max_Rent;
